@@ -15,14 +15,11 @@ class CategoryProductsScreen extends StatelessWidget {
     final productsProvider = Provider.of<ProductsProvider>(context);
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final favoritesProvider = Provider.of<FavoritesProvider>(context);
-    
+
     final products = productsProvider.getProductsByCategory(categoryName);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(categoryName),
-        backgroundColor: Colors.green,
-      ),
+      appBar: AppBar(title: Text(categoryName), backgroundColor: Colors.green),
       body: products.isEmpty
           ? Center(
               child: Column(
@@ -68,7 +65,9 @@ class CategoryProductsScreen extends StatelessWidget {
                         Expanded(
                           flex: 3,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(12),
+                            ),
                             child: Image.network(
                               product.imageUrl,
                               fit: BoxFit.contain,
@@ -102,7 +101,8 @@ class CategoryProductsScreen extends StatelessWidget {
                                 ),
                                 Spacer(),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     IconButton(
                                       icon: Icon(
@@ -113,8 +113,12 @@ class CategoryProductsScreen extends StatelessWidget {
                                         size: 20,
                                       ),
                                       onPressed: () {
-                                        favoritesProvider.toggleFavorite(product);
-                                        productsProvider.toggleFavorite(product.id);
+                                        favoritesProvider.toggleFavorite(
+                                          product,
+                                        );
+                                        productsProvider.toggleFavorite(
+                                          product.id,
+                                        );
                                       },
                                       padding: EdgeInsets.zero,
                                       constraints: BoxConstraints(),
@@ -132,7 +136,9 @@ class CategoryProductsScreen extends StatelessWidget {
                                         ),
                                         onPressed: () {
                                           cartProvider.addToCart(product);
-                                          ScaffoldMessenger.of(context).showSnackBar(
+                                          ScaffoldMessenger.of(
+                                            context,
+                                          ).showSnackBar(
                                             SnackBar(
                                               content: Text(
                                                 '✓ تمت إضافة ${product.name} إلى السلة',

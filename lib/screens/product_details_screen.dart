@@ -14,7 +14,10 @@ class ProductDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final favoritesProvider = Provider.of<FavoritesProvider>(context);
-    final productsProvider = Provider.of<ProductsProvider>(context, listen: false);
+    final productsProvider = Provider.of<ProductsProvider>(
+      context,
+      listen: false,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +26,9 @@ class ProductDetailsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(
-              favoritesProvider.isFavorite(product) ? Icons.favorite : Icons.favorite_border,
+              favoritesProvider.isFavorite(product)
+                  ? Icons.favorite
+                  : Icons.favorite_border,
               color: Colors.white,
             ),
             onPressed: () {
@@ -41,12 +46,9 @@ class ProductDetailsScreen extends StatelessWidget {
             Container(
               height: 300,
               color: Colors.grey.shade100,
-              child: Image.network(
-                product.imageUrl,
-                fit: BoxFit.contain,
-              ),
+              child: Image.network(product.imageUrl, fit: BoxFit.contain),
             ),
-            
+
             // معلومات المنتج
             Padding(
               padding: EdgeInsets.all(16),
@@ -56,13 +58,10 @@ class ProductDetailsScreen extends StatelessWidget {
                   // اسم المنتج
                   Text(
                     product.name,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
-                  
+
                   // الفئة
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -79,7 +78,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-                  
+
                   // السعر
                   Row(
                     children: [
@@ -101,14 +100,11 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 24),
-                  
+
                   // وصف المنتج (وهمي)
                   Text(
                     'وصف المنتج',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
                   Text(
@@ -120,7 +116,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24),
-                  
+
                   // معلومات إضافية
                   Container(
                     padding: EdgeInsets.all(16),
@@ -138,7 +134,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24),
-                  
+
                   // أزرار الإضافة إلى السلة والمفضلة
                   Row(
                     children: [
@@ -155,7 +151,9 @@ class ProductDetailsScreen extends StatelessWidget {
                             cartProvider.addToCart(product);
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('✓ تمت إضافة ${product.name} إلى السلة'),
+                                content: Text(
+                                  '✓ تمت إضافة ${product.name} إلى السلة',
+                                ),
                                 duration: Duration(seconds: 2),
                                 backgroundColor: Colors.green,
                               ),
@@ -222,17 +220,11 @@ class ProductDetailsScreen extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey.shade600,
-            ),
+            style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
           ),
           Text(
             value,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ],
       ),

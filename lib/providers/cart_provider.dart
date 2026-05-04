@@ -26,8 +26,9 @@ class CartProvider extends ChangeNotifier {
   }
 
   void addToCart(Product product) {
-    final existingIndex =
-        _cartItems.indexWhere((item) => item.product.id == product.id);
+    final existingIndex = _cartItems.indexWhere(
+      (item) => item.product.id == product.id,
+    );
     if (existingIndex != -1) {
       _cartItems[existingIndex].quantity++;
     } else {
@@ -66,6 +67,3 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-
-

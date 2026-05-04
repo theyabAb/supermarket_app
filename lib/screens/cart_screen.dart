@@ -30,7 +30,10 @@ class CartScreen extends StatelessWidget {
                           cartProvider.clearCart();
                           Navigator.pop(ctx);
                         },
-                        child: Text('تفريغ', style: TextStyle(color: Colors.red)),
+                        child: Text(
+                          'تفريغ',
+                          style: TextStyle(color: Colors.red),
+                        ),
                       ),
                     ],
                   ),
@@ -53,10 +56,7 @@ class CartScreen extends StatelessWidget {
                   SizedBox(height: 16),
                   Text(
                     'السلة فارغة',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey.shade600,
-                    ),
+                    style: TextStyle(fontSize: 18, color: Colors.grey.shade600),
                   ),
                   SizedBox(height: 8),
                   Text(
@@ -116,16 +116,24 @@ class CartScreen extends StatelessWidget {
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.grey.shade300),
-                                            borderRadius: BorderRadius.circular(8),
+                                            border: Border.all(
+                                              color: Colors.grey.shade300,
+                                            ),
+                                            borderRadius: BorderRadius.circular(
+                                              8,
+                                            ),
                                           ),
                                           child: Row(
                                             children: [
                                               IconButton(
-                                                icon: Icon(Icons.remove, size: 18),
+                                                icon: Icon(
+                                                  Icons.remove,
+                                                  size: 18,
+                                                ),
                                                 onPressed: () {
                                                   cartProvider.decreaseQuantity(
-                                                      item.product.id);
+                                                    item.product.id,
+                                                  );
                                                 },
                                                 padding: EdgeInsets.zero,
                                                 constraints: BoxConstraints(),
@@ -143,7 +151,8 @@ class CartScreen extends StatelessWidget {
                                                 icon: Icon(Icons.add, size: 18),
                                                 onPressed: () {
                                                   cartProvider.increaseQuantity(
-                                                      item.product.id);
+                                                    item.product.id,
+                                                  );
                                                 },
                                                 padding: EdgeInsets.zero,
                                                 constraints: BoxConstraints(),
@@ -166,7 +175,10 @@ class CartScreen extends StatelessWidget {
                                 ),
                               ),
                               IconButton(
-                                icon: Icon(Icons.delete_outline, color: Colors.red),
+                                icon: Icon(
+                                  Icons.delete_outline,
+                                  color: Colors.red,
+                                ),
                                 onPressed: () {
                                   cartProvider.removeFromCart(item.product.id);
                                 },
@@ -216,7 +228,10 @@ class CartScreen extends StatelessWidget {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
-                          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 32,
+                            vertical: 14,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
@@ -229,12 +244,17 @@ class CartScreen extends StatelessWidget {
                                   builder: (ctx) => AlertDialog(
                                     title: Row(
                                       children: [
-                                        Icon(Icons.check_circle, color: Colors.green),
+                                        Icon(
+                                          Icons.check_circle,
+                                          color: Colors.green,
+                                        ),
                                         SizedBox(width: 8),
                                         Text('تم الشراء بنجاح'),
                                       ],
                                     ),
-                                    content: Text('شكراً لتسوقك من سوبرماركت المنار'),
+                                    content: Text(
+                                      'شكراً لتسوقك من سوبرماركت المنار',
+                                    ),
                                     actions: [
                                       TextButton(
                                         onPressed: () {
@@ -261,4 +281,3 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
-

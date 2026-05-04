@@ -4,7 +4,7 @@ import '../providers/products_provider.dart';
 import '../providers/cart_provider.dart';
 import '../providers/favorites_provider.dart';
 import '../widgets/product_card.dart';
-import 'categories_screen.dart';      // أضف هذا السطر
+import 'categories_screen.dart'; // أضف هذا السطر
 import 'favorites_screen.dart';
 import 'cart_screen.dart';
 
@@ -51,16 +51,10 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    constraints: BoxConstraints(
-                      minWidth: 16,
-                      minHeight: 16,
-                    ),
+                    constraints: BoxConstraints(minWidth: 16, minHeight: 16),
                     child: Text(
                       '${cartProvider.itemCount}',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 10),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -100,10 +94,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 8),
                 Text(
                   'أفضل العروض والمنتجات الطازجة',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.green.shade600,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.green.shade600),
                 ),
               ],
             ),

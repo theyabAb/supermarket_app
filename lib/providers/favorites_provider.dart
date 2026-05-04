@@ -24,5 +24,3 @@ class FavoritesProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-

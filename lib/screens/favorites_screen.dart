@@ -7,13 +7,13 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favoritesProvider = Provider.of<FavoritesProvider>(context);
-    final productsProvider = Provider.of<ProductsProvider>(context, listen: false);
+    final productsProvider = Provider.of<ProductsProvider>(
+      context,
+      listen: false,
+    );
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('المفضلة'),
-        backgroundColor: Colors.green,
-      ),
+      appBar: AppBar(title: Text('المفضلة'), backgroundColor: Colors.green),
       body: favoritesProvider.favoriteProducts.isEmpty
           ? Center(
               child: Column(
@@ -27,17 +27,12 @@ class FavoritesScreen extends StatelessWidget {
                   SizedBox(height: 16),
                   Text(
                     'لا توجد منتجات في المفضلة',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey.shade600,
-                    ),
+                    style: TextStyle(fontSize: 18, color: Colors.grey.shade600),
                   ),
                   SizedBox(height: 8),
                   Text(
                     'أضف منتجاتك المفضلة بالضغط على أيقونة القلب',
-                    style: TextStyle(
-                      color: Colors.grey.shade500,
-                    ),
+                    style: TextStyle(color: Colors.grey.shade500),
                   ),
                 ],
               ),
@@ -69,17 +64,15 @@ class FavoritesScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.green.shade700),
                     ),
                     trailing: IconButton(
-                      icon: Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                        size: 28,
-                      ),
+                      icon: Icon(Icons.favorite, color: Colors.red, size: 28),
                       onPressed: () {
                         favoritesProvider.removeFromFavorites(product.id);
                         productsProvider.toggleFavorite(product.id);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('تمت إزالة ${product.name} من المفضلة'),
+                            content: Text(
+                              'تمت إزالة ${product.name} من المفضلة',
+                            ),
                             duration: Duration(seconds: 1),
                           ),
                         );
@@ -92,6 +85,3 @@ class FavoritesScreen extends StatelessWidget {
     );
   }
 }
-
-
-
